@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thiệp Mời Cỗ Gia Đình</title>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #fff8e1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: #fffde7;
+      padding: 40px;
+      border: 3px dashed #ffb74d;
+      border-radius: 20px;
+      width: 450px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+    h1 {
+      color: #f57c00;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #5d4037;
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    .footer {
+      margin-top: 20px;
+      font-style: italic;
+      color: #757575;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    button {
+      background-color: #ffb74d;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ffa726;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>🍛 Thiệp Mời Cỗ Gia Đình 🍛</h1>
+    <p>Trân trọng kính mời: <strong>Cả nhà mình</strong></p>
+    <p>Đến ăn bữa cơm thân mật cuối tháng như thường lệ 😋</p>
+    <p>🕔 Thời gian: 17h30, Thứ Bảy - 19/04/2025</p>
+    <p>🏡 Địa điểm: Tại nhà bà Thông</p>
+
+    <!-- Form xác nhận -->
+    <form id="rsvpForm">
+      <p><strong>Xác nhận tham gia:</strong></p>
+      <input type="text" name="from_name" placeholder="Tên bạn" required><br>
+      <input type="number" name="num_guests" placeholder="Số người tham dự" required><br>
+      <button type="submit">✅ Xác nhận</button>
+    </form>
+
+    <div class="footer">Mong được gặp cả nhà đầy đủ!</div>
+  </div>
+
+  <script>
+    (function(){
+      emailjs.init("service_toan3112"); 
+    })();
+
+    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+        from_name: this.from_name.value,
+        num_guests: this.num_guests.value,
+        to_email: "bottoanguyen3112@gmail.com"
+      }).then(function(response) {
+        alert("Đã gửi xác nhận! Cảm ơn bạn ❤️");
+      }, function(error) {
+        alert("Lỗi gửi xác nhận. Vui lòng thử lại.");
+      });
+    });
+  </script>
+
+</body>
+</html>
